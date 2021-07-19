@@ -1,0 +1,2 @@
+# HadoopDemo_Flask
+基于Hadoop和ElasticSearch的简单文件管理项目
