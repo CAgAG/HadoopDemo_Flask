@@ -12,7 +12,7 @@ db = SQLAlchemy(app)
 # 连接 hdfs
 client = pyhdfs.HdfsClient(hosts='192.168.174.10:50070', user_name='root')
 # 使用 elasticsearch 代替数据库
-es = elasticsearch.Elasticsearch(['192.168.174.10'], http_auth=('es', '3349768300'), port=9200)
+es = elasticsearch.Elasticsearch(['192.168.174.10'], http_auth=('es', '123456'), port=9200)
 # es = elasticsearch.Elasticsearch(['192.168.174.10'], http_auth=('user', 'password'), port=9200)
 es_index2 = 'test2'
 
