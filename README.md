@@ -37,4 +37,4 @@ http://127.0.0.1:5000/ 为首页地址
 
 
 ## 效果图
-![index](../images/index.png)
+![index](./images/index.png)
