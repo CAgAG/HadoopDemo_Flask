@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>搜索结果</title>
+    <link rel="stylesheet" href="../static/layui-v2.6.8/layui/css/layui.css">
+</head>
+<body>
+<table class="layui-table" id="data_form">
+    <colgroup>
+        <col width="150">
+        <col width="200">
+        <col>
+    </colgroup>
+    <thead>
+    <tr>
+        <th>文件名</th>
+        <th>路径</th>
+    </tr>
+    </thead>
+    <tbody>
+
+    {% for i in range(data_list | length) %}
+            <tr id="{{ i }}">
+
+                <td>{{ data_list[i]['filename'] }}</td>
+                <td>
+                    <a href="/file_view/reset_path?r_path={{ data_list[i]['filepath'] }}">{{ data_list[i]['filepath'] }}</a>
+                </td>
+            </tr>
+    {% endfor %}
+
+    </tbody>
+</table>
+<a href="/file_view/browser" class="layui-btn layui-btn-radius" style="text-align: center">返回文件浏览器</a>
+
+</body>
+
+<script src="../static/layui-v2.6.8/layui/layui.js"></script>
+<script src="../static/js/jquery.min.js"></script>
+<script>
+    function showtip(word, t = 2) {
+        if (word === "") {
+            return
+        }
+        layui.use("layer", function () {
+            var layertip = layui.layer;
+            layertip.msg(word, {offset: "auto", time: t * 1000})
+        });
+
+    }
+
+    function post_to_re(url, data, id) {
+        $.post(url, {"username": data}, function (result) {
+            showtip("删除成功");
+            $('#' + id).remove();
+        })
+    }
+
+    function post_to_re2(url, data) {
+        $.post(url, {"id": data}, function (result) {
+        })
+    }
+</script>
+</html>

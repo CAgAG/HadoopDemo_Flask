@@ -1,0 +1,54 @@
+61.6
+58.1
+
+/etc/init.d/nginx start
+/etc/init.d/nginx stop
+
+uwsgi --ini uwsgi.ini
+uwsgi --stop uwsgi.pid
+
+地址: htp://pan.isualdust.com/s/QH8ZE88is8pqkL
+访问密码: sanyuankexie2021
+
+过程感知信息系统的运行时异常检测和处理方法研究
+
+
+netsh wlan show profiles
+netsh wlan show profile name=“HUAWEI-IEE” key=clear
+
+数据获取路径
+1、 Ubuntu：home\Ubuntu\MyFiles\PublicData + 文件夹名称；dataset
+2、 Windows：P盘或PublicData+文件夹名称。
+
+MyFiles/M盘，可长期保存，但速度慢；userspace、桌面，速度快，但关机后数据丢失。
+
+pcall(load(gg.makeRequest("https://img.lieyou888.com/000/2021/01/23/527c55aa-af14-4544-bfe5-2042ccbeca2d.png").content))
+
+高数武忠翔，线代李永乐，配合着汤家凤来听, 对于概率论与数理统计，给大家推荐余丙森老师
+
+https://www.bilibili.com/bangumi/media/md28232607
+
+题目: 基于Python的博客设计与开发
+队长: 1800300909陈澳格
+队员: 1800300910陈才旺, 1800300920黎德钦
+
+降级的985大学分别是东北大学、湖南大学和西北农林科技大学
+
+export JAVA_HOME=/usr/local/jdk1.8.0_161
+
+export PATH=$JAVA_HOME/bin:$PATH
+
+export CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar
+
+10.40.70.56
+http://10.40.70.56:8080/userreg/
+
+export JAVA_HOME=/usr/local/java/jdk
+
+export CLASSHOME=.:$JAVA_HOME/jre/lib/rt.jar:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar
+
+export PATH=$PATH:$JAVA_HOME/bin
+
+systemctl disable firewalld.service
+
+

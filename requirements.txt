@@ -1,0 +1,17 @@
+certifi==2021.5.30
+chardet==4.0.0
+click==8.0.1
+colorama==0.4.4
+elasticsearch==7.13.3
+Flask==2.0.1
+greenlet==1.1.0
+idna==2.10
+itsdangerous==2.0.1
+Jinja2==3.0.1
+MarkupSafe==2.0.1
+PyHDFS==0.3.1
+requests==2.25.1
+simplejson==3.17.2
+SQLAlchemy==1.4.20
+urllib3==1.26.6
+Werkzeug==2.0.1

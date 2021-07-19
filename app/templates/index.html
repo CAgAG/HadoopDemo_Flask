@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Login</title>
+    <link rel="stylesheet" href="../static/css/style.css">
+    <link rel="stylesheet" href="../static/layui-v2.6.8/layui/css/layui.css">
+</head>
+<body>
+<div id="login-box">
+    <form action="/user/login" method="post">
+        <h1>HadoopDemo</h1>
+        <div class="form">
+            <div class="item">
+                <i class="layui-icon layui-icon-user"></i>
+                <input type="text" placeholder="Username" name="username" required/>
+            </div>
+            <div class="item">
+                <i class="layui-icon layui-icon-slider" ></i>
+                <input type="password" placeholder="Password" name="password" required/>
+            </div>
+        </div>
+        <button type="submit">登录</button>
+
+    </form>
+    <a href="/user/register" class="layui-btn layui-btn-radius layui-btn-primary" style="margin-top: 15px; color: white">注册</a>
+    <a href="/user/reset" class="layui-btn layui-btn-radius layui-btn-primary" style="margin-top: 15px; color: white">重置密码</a>
+</div>
+</body>
+
+<script src="../static/layui-v2.6.8/layui/layui.js"></script>
+</html>

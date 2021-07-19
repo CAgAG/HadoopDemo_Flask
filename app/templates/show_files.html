@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>文件浏览器</title>
+
+    <link rel="stylesheet" href="../static/layui-v2.6.8/layui/css/layui.css">
+</head>
+<body>
+<form action="/search/search_file" method="post" style="margin-top: 15px; text-align: center">
+    <div class="layui-inline">
+        <button type="submit" class="layui-btn layui-btn-radius">提交检索</button>
+        <div class="layui-input-inline" style="margin-left: 10px; width: 500px">
+            <input type="text" name="key_file" required lay-verify="required"
+                   placeholder="请输入关键词" autocomplete="off" class="layui-input">
+        </div>
+    </div>
+</form>
+
+
+<label>当前目录是: {{ path }}</label>
+<table class="layui-table">
+    <colgroup>
+        <col width="150">
+        <col width="200">
+        <col>
+    </colgroup>
+    <thead>
+    <tr>
+        <th>文件名</th>
+        <th>文件大小</th>
+        <th>操作</th>
+    </tr>
+    </thead>
+    <tbody id="table">
+    <tr>
+        <td>
+            <button onclick="post_to_re('{{ url }}', '../')" style="border: none; background: white">../</button>
+        </td>
+        <td></td>
+        <td></td>
+    </tr>
+    {% for file in rets %}
+        <tr>
+
+            {% if file['type'] == 0 %}
+                <td>
+                    <i class="layui-icon layui-icon-export"></i>
+                    <button onclick="post_to_re('{{ url }}', '{{ file['name'] }}')"
+                            style="border: none; background: white">{{ file['name'] }}</button>
+                </td>
+                <td></td>
+                <td>
+                    <button class="layui-btn layui-btn-danger" onclick="post_to_re('{{ url2 }}', '{{ file['name'] }}')">
+                        删除
+                    </button>
+                </td>
+            {% else %}
+                <td>
+                    <i class="layui-icon layui-icon-file-b"></i>
+                    <button style="border: none; background: white">{{ file['name'] }}</button>
+                </td>
+                <td>{{ file['length'] }}</td>
+                <td>
+                    <button class="layui-btn layui-btn-danger" onclick="post_to_re('{{ url2 }}', '{{ file['name'] }}')">
+                        删除
+                    </button>
+                    <button class="layui-btn layui-btn-primary"
+                            onclick="post_to_file('{{ url3 }}', '{{ file['name'] }}')">下载
+                    </button>
+                </td>
+
+
+            {% endif %}
+        </tr>
+    {% endfor %}
+
+    </tbody>
+</table>
+<div style="text-align: right">
+    <a href="/file_view/upload" class="layui-btn layui-btn-radius">上传到当前目录</a>
+
+    <form action="/file_view/create_dir" method="post" style="margin-top: 15px">
+        <div class="layui-inline">
+            <button type="submit" class="layui-btn layui-btn-radius layui-btn-normal">新建目录</button>
+            <div class="layui-input-inline" style="width: 150px;margin-left: 10px">
+                <input type="text" name="dirname" style="width: 150px;" required lay-verify="required"
+                       placeholder="请输入目录名" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+    </form>
+
+</div>
+
+</body>
+
+<script src="../static/layui-v2.6.8/layui/layui.js"></script>
+<script src="../static/js/jquery.min.js"></script>
+
+<script>
+    function notice(url, filename) {
+        layui.use('layer', function () { //独立版的layer无需执行这一句
+            var $ = layui.jquery, layer = layui.layer; //独立版的layer无需执行这一句
+            //触发事件
+            //示范一个公告层
+            layer.open({
+                type: 1
+                ,
+                title: false //不显示标题栏
+                ,
+                closeBtn: false
+                ,
+                area: '300px;'
+                ,
+                shade: 0.8
+                ,
+                id: 'LAY_layuipro' //设定一个id，防止重复弹出
+                ,
+                btn: ['关闭']
+                ,
+                btnAlign: 'c'
+                ,
+                moveType: 1 //拖拽模式，0或者1
+                ,
+                content: '<div style="padding: 50px; line-height: 22px; background-color: #393D49; color: #fff; font-weight: 300;">' +
+                    '<label>点击以下文件名下载: </label><br/>' +
+                    '<a style="color: white;" href="' + url + '"download="' + filename + '">' + filename + '</a></div>'
+                ,
+                success: function (layero) {
+                    var btn = layero.find('.layui-layer-btn');
+
+                }
+            });
+        });
+    }
+
+    function showtip(word, t = 2) {
+        if (word === "") {
+            return
+        }
+        layui.use("layer", function () {
+            var layertip = layui.layer;
+            layertip.msg(word, {offset: "auto", time: t * 1000})
+        });
+
+    }
+
+    function post_to(url, data) {
+        $.post(url, {"path": data}, function (result) {
+            $("#table").html(result['hl']);
+        })
+    }
+
+    function post_to_re(url, data) {
+        $.post(url, {"path": data}, function (result) {
+            location.reload();
+        })
+    }
+
+    function post_to_file(url, data) {
+        showtip("请稍等, 服务器正在努力加载中!", 5);
+        $.post(url, {"path": data}, function (result) {
+            notice(result['f_url'], result['filename']);
+        })
+    }
+
+    function load() {
+
+    }
+
+</script>
+</html>
