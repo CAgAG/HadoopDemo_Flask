@@ -43,7 +43,7 @@ if __name__ == '__main__':
         # 查询
         username = f'22df58f9-9428-43c7-ba0e-30b5d847cfbd'
 
-    es = elasticsearch.Elasticsearch(['192.168.174.10'], http_auth=('es', '3349768300'), port=9200)
+    es = elasticsearch.Elasticsearch(['192.168.174.10'], http_auth=('es', 'password'), port=9200)
     es_index = 'hadoop_demo_exp'
 
     db = pymysql.connect(host="127.0.0.1", user="test", password="123456", db="hadoop_demo")
