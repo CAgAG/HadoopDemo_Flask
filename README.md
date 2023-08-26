@@ -33,7 +33,7 @@ python3 app.py
  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
 ```
 http://127.0.0.1:5000/ 为首页地址
-> 注意此处还需要修改 **app/view/__init__.py** 的 **BASEURL** 为你当前的连接, 此处为 http://127.0.0.1:5000/
+> 注意此处还需要修改 **app/view/__init__.py** 的 **BASEURL** 为你当前的连接, 此处为 http://127.0.0.1:5000/. 修改之后再重新运行项目.
 
 
 ## 效果图
